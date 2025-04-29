@@ -9,7 +9,6 @@ interface SupplierCellRaw {
   unitPrice: number;
   totalPrice: number;
   leadTime: number;
-  topPick: boolean;
 }
 
 interface PartRowRaw {
@@ -27,7 +26,6 @@ export interface SupplierCell {
   unitPrice: number;
   totalPrice: number;
   leadTime: number;
-  topPick: boolean;
 }
 
 export interface PartRow {
@@ -196,7 +194,6 @@ export async function compareQuote(quoteId: string): Promise<ComparisonResult> {
       unitPrice: s.unitPrice,
       totalPrice: s.totalPrice,
       leadTime: s.leadTime,
-      topPick: s.topPick,
     })),
   }));
 
