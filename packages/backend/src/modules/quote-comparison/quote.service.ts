@@ -128,26 +128,6 @@ export async function compareQuote(quoteId: string): Promise<ComparisonResult> {
         suppliers: { $push: "$$ROOT" },
       },
     },
-    {
-      $addFields: {
-        suppliers: {
-          $map: {
-            input: "$suppliers",
-            as: "s",
-            in: {
-              $mergeObjects: [
-                "$$s",
-                {
-                  topPick: {
-                    $eq: ["$$s.totalPrice", { $min: "$suppliers.totalPrice" }],
-                  },
-                },
-              ],
-            },
-          },
-        },
-      },
-    },
     { $unwind: "$suppliers" },
     { $unwind: "$suppliers.items" },
     {
